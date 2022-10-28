@@ -1,10 +1,14 @@
 package fr.lernejo.umlgrapher;
 
 public class UmlGraph {
-    public UmlGraph(Class<?> machinClass) {
+
+    private final Class[] classes;
+
+    public UmlGraph(Class[] classes) {
+        this.classes = classes;
     }
 
-    public String as(GraphType type) {
+    public String as(GraphType graphType) {
         return """
             classDiagram
             class Machin {
@@ -12,4 +16,5 @@ public class UmlGraph {
             }
             """;
     }
+
 }
