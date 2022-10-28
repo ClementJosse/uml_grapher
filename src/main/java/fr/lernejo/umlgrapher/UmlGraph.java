@@ -1,4 +1,5 @@
 package fr.lernejo.umlgrapher;
+import java.lang.reflect.Modifier;
 
 public class UmlGraph {
 
@@ -9,12 +10,18 @@ public class UmlGraph {
     }
 
     public String as(GraphType graphType) {
-        return """
-        classDiagram
-        class Machin {
-            <<interface>>
+        if (graphType == GraphType.Mermaid){
+            StringBuilder graph = new StringBuilder("classDiagram");
+            for(Class<?> theClass : classes){
+                boolean isInterface = Modifier.isInterface(theClass.getModifiers());
+                graph.append("\nclass %s %s".formatted(
+                    theClass.getSimpleName(),
+                    isInterface ? "{\n    <<interface>>\n}\n" : "\n"
+                ));
+            }
+            return graph.toString();
         }
-        """;
+        return "";
     }
 
 }
