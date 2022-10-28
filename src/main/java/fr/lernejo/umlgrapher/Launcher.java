@@ -28,4 +28,4 @@ public class Launcher implements Callable<Integer> {
     public static void main(String... args) {
         System.exit(new CommandLine(new Launcher()).execute(args));
     }
-
+}

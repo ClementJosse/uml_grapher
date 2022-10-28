@@ -10,11 +10,11 @@ public class UmlGraph {
 
     public String as(GraphType graphType) {
         return """
-            classDiagram
-            class Machin {
-                <<interface>>
-            }
-            """;
+        classDiagram
+        class Machin {
+            <<interface>>
+        }
+        """;
     }
 
 }
