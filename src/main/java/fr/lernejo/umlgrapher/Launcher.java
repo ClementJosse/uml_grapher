@@ -15,14 +15,17 @@ public class Launcher implements Callable<Integer> {
     private final GraphType graphType = GraphType.Mermaid;
 
     @Override
-    public void Integer call() {
+    public Integer call() {
         UmlGraph graph = new UmlGraph(this.classes);
+
         String output = graph.as(this.graphType);
+
         System.out.println(output);
+
+        return 0;
     }
 
     public static void main(String... args) {
         System.exit(new CommandLine(new Launcher()).execute(args));
     }
 
-}
